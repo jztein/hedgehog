@@ -1,0 +1,99 @@
+<html>
+<head>
+<title> Pocket dig </title>
+
+<style>
+
+body {
+background-color:#aaaaaa;
+}
+
+#info{
+text-align:center;
+}
+
+.grid {
+margin: auto;
+width: 800px;
+}
+
+.image {
+float: left;
+}
+
+.button {
+padding: 66px 0px 66px 0px;
+width:200px;
+background-color:#ff0099;
+float:left;
+text-align: center;
+}
+
+.button:hover {
+background-color:#22aa22;
+}
+
+.button:active {
+background-color:#004400;
+}
+
+h1 {
+text-align:center;
+}
+
+</style>
+
+<script>
+
+// preload assets
+hogIm = new Image();
+hogIm.src = "assets/hedgehog.jpg";
+
+dullIm = new Image();
+dullIm.src = "assets/dullhog.jpg";
+
+emptyIm = new Image();
+emptyIm.src = "assets/emptyplate.jpg";
+
+</script>
+
+
+</head>
+<body>
+
+<script>
+function boris(){
+document.getElementById("info").innerHTML = "{{ promo }}";
+}
+</script>
+
+
+
+<h1>Find the hedgehog</h1>
+
+<div class="grid">
+
+{% for b in buttons %}
+<a onclick="alert('bob')">
+<div class="image">
+<img src="assets/dullhog.jpg" onclick="this.src={{ b.answer }}"/>
+</div>
+</a>
+{% endfor %}
+
+
+<div id="info">
+
+</div>
+
+</div>
+
+
+
+
+</body>
+
+
+
+
+</html>
