@@ -15,7 +15,7 @@ class MainPage(webapp2.RequestHandler):
             if i != 2:
                 bs.append(Button('emptyIm.src'))
             else:
-                bs.append(Button('hogIm.src; boris();'))
+                bs.append(Button("hogIm.src; document.getElementById('info').innerHTML='Promo-code'"))
         self.response.write(template.render(buttons=bs, promo='fetch'))
 
 

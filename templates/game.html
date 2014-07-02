@@ -61,24 +61,15 @@ emptyIm.src = "assets/emptyplate.jpg";
 </head>
 <body>
 
-<script>
-function boris(){
-document.getElementById("info").innerHTML = "{{ promo }}";
-}
-</script>
-
-
 
 <h1>Find the hedgehog</h1>
 
 <div class="grid">
 
 {% for b in buttons %}
-<a onclick="alert('bob')">
 <div class="image">
 <img src="assets/dullhog.jpg" onclick="this.src={{ b.answer }}"/>
 </div>
-</a>
 {% endfor %}
 
 
