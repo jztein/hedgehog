@@ -62,6 +62,8 @@ text-align:center;
 </style>
 
 <script>
+var tries = 0;
+
 /*
 // preload assets
 hogIm = new Image();
@@ -79,9 +81,11 @@ emptyIm.src = "assets/emptyplate.jpg";
 </head>
 <body>
 
+<div class="whole">
 
 <h2>Find the hedgehog</h2>
 <p class="subs">Choose the correct plate to get a promocode<br/>
+<b>Double click</b> to choose<br/>
 Get free delivery or discounts at <a target="_blank" href="https://hedgehog.myshopify.com">our shop</a></p>
 
 <div class="buffer">
@@ -93,13 +97,13 @@ Find the real hedgehog!
 
 {% for b in buttons %}
 <div class="image{{b.idx}}">
-<img src="assets/dullhog.jpg" onclick="javascript:GetAnswer({{b.idx}})"/><!--{{ b.answer }}"/-->
+<img src="assets/dullhog.jpg" onclick="javascript:GetAnswer({{b.idx}})"/>
 </div>
 {% endfor %}
 
 
 <div class="buffer">
-Collect your promocodes here... <br>Find the real hedgehog!
+Collect your promocodes here... 
 </div>
 
 <div id="info">
@@ -109,7 +113,17 @@ Collect your promocodes here... <br>Find the real hedgehog!
 <script>
 function GetAnswer(idx) {
 
-var outda = '23moron';
+tries += 1;
+if (tries == 4) {
+$('.grid').load('/templates/killjoy.html', function(){
+alert('Out of tries: The hedgehog has escaped!\nCome find it tomorrow');
+});
+
+}
+
+if (tries > 3) {
+return;
+}
 
 $.get('/getanswer', function (response) {
 $('.image' + idx).html(response);
@@ -119,6 +133,8 @@ $('.image' + idx).html(response);
 
 </script>
 
+
+</div> <!-- class: whole -->
 
 </body>
 

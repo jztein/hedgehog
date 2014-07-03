@@ -59,18 +59,21 @@ class MainPage(webapp2.RequestHandler):
         cookie = self.request.cookies
         print "bottle o' rum Cookie:", cookie
 
-        if cookie.get('hello'):
-            bs = []
-            for i in xrange(12):
-                bs.append(Button(str(i), 'moo'))
+        bs = []
+        for i in xrange(12):
+            bs.append(Button(str(i), 'moo'))
+
+
+        if cookie.get('clock'):
             self.response.write(template_stop.render(buttons=bs))
             return
         else:
             # no cookie, so set a cookie
-            expires_date = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            # debug set low seconds
+            expires_date = datetime.datetime.utcnow() + datetime.timedelta(seconds=60)
             expires_str = expires_date.strftime("%d %b %Y %H:%M:%S GMT")
             expires_str = "Expires = %s" % expires_str
-            self.response.headers.add_header('Set-Cookie', 'hello=1; %s' % expires_str)
+            self.response.headers.add_header('Set-Cookie', 'clock=1; %s' % expires_str)
 
 
         discountCodeFailure = False
@@ -82,10 +85,6 @@ class MainPage(webapp2.RequestHandler):
                 db.delete(entries)
             except:
                 print "couldn't delete"
-
-        bs = []
-        for i in xrange(12):
-            bs.append(Button(str(i), 'moo'))
 
         #for i in xrange(12):
         #    bs.append(Button('javascript:GetAnswer()'))
