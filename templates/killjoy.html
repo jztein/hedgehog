@@ -1,0 +1,113 @@
+<html>
+<head>
+<title> Pocket dig </title>
+
+<style>
+
+body {
+background-color:#111112;
+color:#eeeebb;
+font-family:"Arial", Helvetica, sans-serif;
+}
+
+a:link {
+color:#eeeebb;
+}
+
+a:visited {
+color:#eeeebb;
+}
+
+#info{
+text-align:center;
+margin:auto;
+}
+
+.buffer{
+text-align:center;
+color:#111112;
+}
+
+.grid {
+margin: auto;
+width: 800px;
+}
+
+.image1, .image2, .image3, .image4, .image5, .image6, .image7, .image8, .image9, .image10, .image11, .image0 {
+float: left;
+}
+
+.button {
+padding: 66px 0px 66px 0px;
+width:200px;
+background-color:#ff0099;
+float:left;
+text-align: center;
+}
+
+.button:hover {
+background-color:#22aa22;
+}
+
+.button:active {
+background-color:#004400;
+}
+
+h2, .subs {
+text-align:center;
+}
+
+</style>
+
+<script>
+/*
+// preload assets
+hogIm = new Image();
+hogIm.src = "assets/hedgehog.jpg";
+
+dullIm = new Image();
+dullIm.src = "assets/dullhog.jpg";
+
+emptyIm = new Image();
+emptyIm.src = "assets/emptyplate.jpg";
+//*/
+</script>
+
+
+</head>
+<body>
+
+
+<h2>Find the hedgehog</h2>
+<p class="subs">Sorry, please come again tomorrow to play<br/>
+You can still look around at <a target="_blank" href="https://hedgehog.myshopify.com">our shop</a></p>
+
+<div class="buffer">
+Find the real hedgehog!
+</div>
+
+
+<div class="grid">
+
+{% for b in buttons %}
+<div class="image{{b.idx}}">
+<img src="assets/dullhog.jpg"/>
+</div>
+{% endfor %}
+
+
+<div class="buffer">
+Collect your promocodes here... <br>Find the real hedgehog!
+</div>
+
+<div id="info">
+{{ promo }}
+</div>
+
+
+</body>
+
+
+
+
+</html>

@@ -2,6 +2,7 @@ import webapp2
 from jinja2 import Environment, PackageLoader
 from cgi import escape
 import random
+import datetime
 
 from google.appengine.ext import db
 
@@ -52,6 +53,25 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = 'text/html'
         env = Environment(loader=PackageLoader('pocketgame', 'templates'))
         template = env.get_template('game.html')
+        template_stop = env.get_template('killjoy.html')
+
+        # if it's not one day yet, the user can't play yet
+        cookie = self.request.cookies
+        print "bottle o' rum Cookie:", cookie
+
+        if cookie.get('hello'):
+            bs = []
+            for i in xrange(12):
+                bs.append(Button(str(i), 'moo'))
+            self.response.write(template_stop.render(buttons=bs))
+            return
+        else:
+            # no cookie, so set a cookie
+            expires_date = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            expires_str = expires_date.strftime("%d %b %Y %H:%M:%S GMT")
+            expires_str = "Expires = %s" % expires_str
+            self.response.headers.add_header('Set-Cookie', 'hello=1; %s' % expires_str)
+
 
         discountCodeFailure = False
 
