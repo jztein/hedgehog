@@ -2,6 +2,8 @@
 <head>
 <title> Pocket dig </title>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <style>
 
 body {
@@ -33,7 +35,7 @@ margin: auto;
 width: 800px;
 }
 
-.image {
+.image1, .image2, .image3, .image4, .image5, .image6, .image7, .image8, .image9, .image10, .image11, .image0 {
 float: left;
 }
 
@@ -60,7 +62,7 @@ text-align:center;
 </style>
 
 <script>
-
+/*
 // preload assets
 hogIm = new Image();
 hogIm.src = "assets/hedgehog.jpg";
@@ -70,7 +72,7 @@ dullIm.src = "assets/dullhog.jpg";
 
 emptyIm = new Image();
 emptyIm.src = "assets/emptyplate.jpg";
-
+//*/
 </script>
 
 
@@ -90,8 +92,8 @@ Find the real hedgehog!
 <div class="grid">
 
 {% for b in buttons %}
-<div class="image">
-<img src="assets/dullhog.jpg" onclick="this.src={{ b.answer }}"/>
+<div class="image{{b.idx}}">
+<img src="assets/dullhog.jpg" onclick="javascript:GetAnswer({{b.idx}})"/><!--{{ b.answer }}"/-->
 </div>
 {% endfor %}
 
@@ -104,7 +106,18 @@ Collect your promocodes here... <br>Find the real hedgehog!
 {{ promo }}
 </div>
 
+<script>
+function GetAnswer(idx) {
 
+var outda = '23moron';
+
+$.get('/getanswer', function (response) {
+$('.image' + idx).html(response);
+});
+
+};
+
+</script>
 
 
 </body>
