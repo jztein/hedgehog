@@ -1,0 +1,43 @@
+<html>
+
+  <head>
+    <title>Top hog</title>
+
+<style>
+.uploaded {
+  float:right;
+}
+
+.pusharea {
+  float:left;
+}
+</style>
+
+  </head>
+
+  <body>
+
+<div class="uploaded">
+  <h1> uploaded pcodes: {{ num }} </h1>
+    {% for p in pcodes %}
+      {{ p }} <br>
+    {% endfor %}
+</div>
+
+<div class="pusharea">
+    <p>
+      Copy and paste 'exported to text' discount codes. <br/>
+      Discount codes can be created in bulk using the Bulk Discounts app.
+    </p>
+  
+    <form action="/president" method="post">
+      <input type="submit"/>
+      <br/>
+      <textarea name="promocodes" placeholder="copy & paste fully here" rows="100" cols="50"></textarea>
+    </form>
+
+</div>
+
+  </body>
+
+</html>

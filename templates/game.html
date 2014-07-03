@@ -5,11 +5,19 @@
 <style>
 
 body {
-background-color:#aaaaaa;
+background-color:#111112;
+color:#eeeebb;
+font-family:"Arial", Helvetica, sans-serif;
 }
 
 #info{
 text-align:center;
+margin:auto;
+}
+
+.buffer{
+text-align:center;
+color:#111112;
 }
 
 .grid {
@@ -37,7 +45,7 @@ background-color:#22aa22;
 background-color:#004400;
 }
 
-h1 {
+h2, .subs {
 text-align:center;
 }
 
@@ -62,7 +70,14 @@ emptyIm.src = "assets/emptyplate.jpg";
 <body>
 
 
-<h1>Find the hedgehog</h1>
+<h2>Find the hedgehog</h2>
+<p class="subs">Choose the correct plate to get a promocode<br/>
+Get free delivery or discounts</p>
+
+<div class="buffer">
+Find the real hedgehog!
+</div>
+
 
 <div class="grid">
 
@@ -73,10 +88,12 @@ emptyIm.src = "assets/emptyplate.jpg";
 {% endfor %}
 
 
-<div id="info">
-
+<div class="buffer">
+Collect your promocodes here... <br>Find the real hedgehog!
 </div>
 
+<div id="info">
+{{ promo }}
 </div>
 
 
